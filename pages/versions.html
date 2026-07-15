@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOPACK - Versions</title>
+    <meta name="description" content="Explore all versions of ECOPack, the streamlined Business Management App.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- Root-relative path — works correctly on all hosting environments -->
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body {
+            background-color: #2b2b2b;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-navbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            background-color: #252525;
+            color: #fff;
+        }
+        .page-navbar .footer-nav a.active {
+            opacity: 1;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+        .page-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="page-navbar hero-stagger">
+        <div class="footer-logo">
+            <span class="logo-ep">ep</span><span class="logo-ecopack">EcoPack</span>
+        </div>
+        <div class="footer-nav">
+            <a href="/index.html" data-i18n="nav_home">Home</a>
+            <a href="/pages/about.html" data-i18n="nav_about">About</a>
+            <a href="/pages/versions.html" class="active" data-i18n="nav_versions">Versions</a>
+            <a href="/pages/contact.html" data-i18n="nav_contact">Contact</a>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <select id="lang-select" class="lang-switcher">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+                <option value="ar">العربية</option>
+            </select>
+            <a href="https://ecopack-bmas.vercel.app/" target="_blank" class="btn btn-footer-filled" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;" data-i18n="btn_try_beta">Try BETA</a>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <section class="new-versions-section" style="width: 100%; max-width: 1200px; margin: auto;">
+            <h2 class="animate-slide-left anim-d-1" data-i18n="page_versions_h"><i>Versions</i></h2>
+            <div class="version-card animate-scale-up anim-d-3">
+                <div class="version-info">
+                    <h3 class="animate-fade-up anim-d-4" data-i18n="version_09b_name"><i>0.9b</i></h3>
+                    <p class="animate-fade-up anim-d-5" data-i18n="version_09b_desc">The first Version, A Demo you can use for basic tasks</p>
+                </div>
+                <div class="version-action animate-fade-up anim-d-5">
+                    <a href="https://ecopack-bmas.vercel.app/" target="_blank" class="btn btn-filled" style="background:#222;color:#fff;border-color:#222;" data-i18n="btn_launch">Launch ECOPACK</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Root-relative path — works correctly on all hosting environments -->
+    <script src="/script.js"></script>
+</body>
+</html>
