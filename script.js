@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation
     document.querySelectorAll('.main-nav a, .footer-nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            if (this.getAttribute('href').startsWith('#')) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
