@@ -17,15 +17,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            background-color: #303030;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            background-color: #303030;
+            color: #fff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
+
+        h2,
+        h3 {
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #303030;
+        }
+
         .page-navbar {
             position: relative;
             z-index: 10;
@@ -36,15 +58,327 @@
             background-color: #2b2b2b;
             color: #fff;
         }
-        .page-navbar .footer-nav a.active {
+
+        .footer-logo {
+            display: flex;
+            align-items: baseline;
+            font-size: 1.5rem;
+        }
+
+        .logo-ep {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.5rem;
+            margin-right: 0.3rem;
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .logo-ecopack {
+            font-weight: 500;
+        }
+
+        .footer-logo:hover .logo-ep {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .footer-nav a {
+            position: relative;
+            color: #fff;
+            transition: opacity 0.3s;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .footer-nav a:hover::after {
+            width: 100%;
+        }
+
+        .page-navbar .footer-nav a.active,
+        .page-navbar .footer-nav a[aria-current="page"] {
             opacity: 1;
             text-decoration: underline;
             text-underline-offset: 5px;
         }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-footer-filled {
+            background: #fff;
+            border: 1px solid #fff;
+            color: #000;
+            border-radius: 50px;
+            padding: 0.8rem 2.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-footer-filled:hover {
+            background: #e0e0e0;
+        }
+
+        .lang-switcher {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 0.5rem 1rem;
+            padding-right: 2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem top 50%;
+            background-size: 0.65rem auto;
+        }
+
+        .lang-switcher:hover {
+            border-color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-switcher option {
+            background: #2b2b2b;
+            color: #fff;
+        }
+
         .page-content {
             flex: 1;
             display: flex;
             align-items: center;
+        }
+
+        .new-about-section {
+            background-color: #303030;
+            color: #fff;
+            padding: 6rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .new-about-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        .new-about-block h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .new-about-block p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 500px;
+            font-weight: 500;
+            color: #eaeaea;
+        }
+
+        .new-about-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .new-about-right h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .new-about-right h2 .large-letter {
+            font-style: normal;
+            font-size: 1.2em;
+        }
+
+        .new-about-right p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 450px;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+            color: #eaeaea;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeftAnim {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRightAnim {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-stagger {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .animate-fade-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .animate-slide-left {
+            opacity: 0;
+            animation: slideInLeftAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            animation: slideInRightAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .anim-d-1 { animation-delay: 0.1s; }
+        .anim-d-2 { animation-delay: 0.2s; }
+        .anim-d-3 { animation-delay: 0.3s; }
+        .anim-d-4 { animation-delay: 0.4s; }
+        .anim-d-5 { animation-delay: 0.5s; }
+
+        html[dir="rtl"] {
+            text-align: right;
+        }
+
+        html[dir="rtl"] body,
+        html[dir="rtl"] .btn,
+        html[dir="rtl"] .lang-switcher {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        html[dir="rtl"] .logo-ep,
+        html[dir="rtl"] h2,
+        html[dir="rtl"] h3 {
+            font-family: 'Amiri', serif;
+        }
+
+        html[dir="rtl"] .lang-switcher {
+            background-position: left 0.7rem top 50%;
+            padding-left: 2rem;
+            padding-right: 1rem;
+        }
+
+        html[dir="rtl"] .new-about-section,
+        html[dir="rtl"] .new-about-block p,
+        html[dir="rtl"] .new-about-right,
+        html[dir="rtl"] .new-about-right p,
+        html[dir="rtl"] .new-about-right h2 {
+            text-align: right;
+        }
+
+        @media (max-width: 992px) {
+            .page-navbar {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .new-about-section {
+                flex-direction: column;
+                padding: 4rem 2rem;
+            }
+
+            .new-about-block h2,
+            .new-about-right h2 {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .logo-ep {
+                font-size: 2.1rem;
+            }
+
+            .new-about-block h2,
+            .new-about-right h2 {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
