@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECOPACK - Versions</title>
     <meta name="description" content="Explore all versions of ECOPack, the streamlined Business Management App.">
+    <script>
+        (function () {
+            const path = window.location.pathname.replace(/\\/g, '/');
+            const base = document.createElement('base');
+
+            base.href = /\/pages\/[^/]+\.html?$/.test(path) ? '../' : './';
+            document.head.appendChild(base);
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #2b2b2b;
@@ -47,10 +56,10 @@
             <span class="logo-ep">ep</span><span class="logo-ecopack">EcoPack</span>
         </div>
         <div class="footer-nav">
-            <a href="../index.html" data-i18n="nav_home">Home</a>
-            <a href="about.html" data-i18n="nav_about">About</a>
-            <a href="versions.html" class="active" data-i18n="nav_versions">Versions</a>
-            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+            <a href="index.html" data-route="home" data-i18n="nav_home">Home</a>
+            <a href="pages/about.html" data-route="about" data-i18n="nav_about">About</a>
+            <a href="pages/versions.html" class="active" data-route="versions" data-i18n="nav_versions">Versions</a>
+            <a href="pages/contact.html" data-route="contact" data-i18n="nav_contact">Contact</a>
         </div>
         <div style="display: flex; gap: 1rem; align-items: center;">
             <select id="lang-select" class="lang-switcher">
@@ -79,6 +88,6 @@
         </section>
     </div>
 
-    <script src="../script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

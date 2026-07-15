@@ -107,6 +107,13 @@ h1, h2, h3 {
     opacity: 0.7;
 }
 
+.main-nav a.active,
+.main-nav a[aria-current="page"] {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
 .cta-container {
     display: flex;
     gap: 1rem;
@@ -364,6 +371,13 @@ h1, h2, h3 {
 
 .footer-nav a:hover {
     opacity: 0.7;
+}
+
+.footer-nav a.active,
+.footer-nav a[aria-current="page"] {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }
 
 .btn-footer-outline {
@@ -965,4 +979,3 @@ html[dir="rtl"] .btn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
-

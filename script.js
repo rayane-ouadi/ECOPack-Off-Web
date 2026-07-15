@@ -1,6 +1,54 @@
 // Simple script to handle smooth scrolling or animations if needed
 document.addEventListener('DOMContentLoaded', () => {
     console.log('ECOPACK Presentation initialized.');
+
+    const routes = {
+        home: 'index.html',
+        about: 'pages/about.html',
+        versions: 'pages/versions.html',
+        contact: 'pages/contact.html'
+    };
+
+    function getCurrentRoute() {
+        const path = window.location.pathname.replace(/\\/g, '/');
+        const pageName = path.split('/').pop() || 'index.html';
+
+        switch (pageName) {
+            case 'about.html':
+                return 'about';
+            case 'versions.html':
+                return 'versions';
+            case 'contact.html':
+                return 'contact';
+            case 'index.html':
+            default:
+                return 'home';
+        }
+    }
+
+    const currentRoute = getCurrentRoute();
+
+    document.querySelectorAll('[data-route]').forEach(link => {
+        const routeKey = link.getAttribute('data-route');
+        const routeHref = routes[routeKey];
+
+        if (!routeHref) {
+            return;
+        }
+
+        link.setAttribute('href', routeHref);
+
+        if (link.matches('.main-nav a, .footer-nav a')) {
+            const isActive = routeKey === currentRoute;
+            link.classList.toggle('active', isActive);
+
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        }
+    });
     
     // Smooth scrolling for navigation
     document.querySelectorAll('.main-nav a, .footer-nav a').forEach(anchor => {
